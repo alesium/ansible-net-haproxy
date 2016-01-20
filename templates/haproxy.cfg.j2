@@ -1,0 +1,19 @@
+# this config needs haproxy-1.5.14
+global
+        log 127.0.0.1   local1 notice
+        maxconn 4096
+        uid 70
+        gid 70
+        daemon
+
+defaults
+        log     global
+        mode    http
+        option  tcplog
+        option  dontlognull
+        retries 3
+        option redispatch
+        maxconn 2000
+        timeout connect      5000
+        timeout client      50000
+        timeout server      50000

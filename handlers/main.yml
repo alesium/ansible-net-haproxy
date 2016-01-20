@@ -1,0 +1,7 @@
+---
+- name: enable haproxy
+  service: name="{{ net_haproxy_service_name }}" state="started" enabled="yes"
+
+- name: restart haproxy
+  service: name="{{ net_haproxy_service_name }}" state="restarted"
+

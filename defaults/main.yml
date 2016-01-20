@@ -1,0 +1,6 @@
+---
+net_haproxy_packages: 
+    - "haproxy"
+net_haproxy_service_name: "pkgsrc/haproxy"
+net_haproxy_config_file_src: "haproxy.cfg.j2"
+net_haproxy_config_file_dest: "/opt/local/etc/haproxy.cfg"

@@ -1,0 +1,15 @@
+---
+- name: install required packages
+  pkgin: name="{{ item }}" state="present"
+  ignore_errors: yes
+  with_items: "{{ net_haproxy_packages }}"
+  tags:
+          - haproxy
+          - install
+
+- name: copy haproxy configuration
+  template: src="{{ net_haproxy_config_file_src }}" dest="{{ net_haproxy_config_file_dest }}" backup="yes" owner="root" group="root" mode="0644"
+  notify: restart haproxy
+  tags:
+          - haproxy
+          - update
