@@ -2,6 +2,7 @@
 - name: install required packages
   pkgin: name="{{ item }}" state="present"
   ignore_errors: yes
+  notify: enable haproxy
   with_items: "{{ net_haproxy_packages }}"
   tags:
           - haproxy
