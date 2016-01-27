@@ -8,9 +8,24 @@
           - haproxy
           - install
 
+- name: execute pre haproxy configuration tasks
+  include: "{{ net_haproxy_pre_include }}"
+  when: net_haproxy_pre_include is defined
+  tags:
+         - haproxy
+         - update
+
+
 - name: copy haproxy configuration
   template: src="{{ net_haproxy_config_file_src }}" dest="{{ net_haproxy_config_file_dest }}" backup="yes" owner="root" group="root" mode="0644"
   notify: restart haproxy
   tags:
           - haproxy
           - update
+
+- name: execute post haproxy configuration tasks
+  include: "{{ net_haproxy_post_include }}"
+  when: net_haproxy_post_include is defined
+  tags:
+         - haproxy
+         - update
